@@ -14,21 +14,33 @@ app = FastAPI(
 )
 
 
+# ==========================================
+# CORS
+# ==========================================
+
 app.add_middleware(
     CORSMiddleware,
+
     allow_origins=[
         "http://localhost:5173",
         "http://127.0.0.1:5173",
 
-        # Vercel deploy mudinja apram
-        # actual frontend URL inga add pannuvom
-        # "https://fenrir-ai.vercel.app",
+        # Production domain
+        "https://fenrir-ai-five.vercel.app",
     ],
+
+    # Allows Vercel preview deployment URLs too
+    allow_origin_regex=r"https://.*\.vercel\.app",
+
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+
+# ==========================================
+# ROOT
+# ==========================================
 
 @app.get("/")
 def home():
@@ -45,6 +57,10 @@ def health():
         "service": "fenrir-ai",
     }
 
+
+# ==========================================
+# ROUTERS
+# ==========================================
 
 app.include_router(chat_router)
 app.include_router(image_router)
