@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:8000/api/seo/analyze";
+const API_URL = "https://fenrir-ai.onrender.com/api/seo/analyze";
 
 export async function analyzeSeo(file) {
   const formData = new FormData();
