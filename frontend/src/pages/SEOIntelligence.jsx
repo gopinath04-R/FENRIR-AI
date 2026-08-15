@@ -34,7 +34,7 @@ export default function SEOIntelligence() {
       formData.append("file", file);
 
       const response = await fetch(
-        "http://127.0.0.1:8000/api/seo/analyze",
+        "https://fenrir-ai.onrender.com/api/seo/analyze",
         {
           method: "POST",
           body: formData,
